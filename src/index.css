@@ -1,13 +1,232 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --peach: #ffb7a5;
+  --light-peach: #ffe3dc;
+  --dark-peach: #ff8c72;
+  --cream: #fff8f5;
+  --text-dark: #3d2b27;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background: var(--cream);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--light-peach);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Fix overflow */
+}
+
+
+header {
+  background: var(--peach);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--text-dark);
+  font-size: 1.8rem;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+header + p {
+  text-align: center;
+  color: var(--text-dark);
+  margin-top: 8px;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+
+/* Search Bar */
+.search-bar-container {
+  position: relative;
+  margin: 15px 0;
+  width: 100%; /* Fix overflow */
+}
+
+.search-bar-container input {
+  width: 100%;
+  padding: 10px 35px 10px 35px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  box-sizing: border-box; /* Fix overflow */
+}
+
+.search-bar-container .search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+
+/* Add Note Inputs */
+.add-note input,
+.add-note textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-sizing: border-box; /* Fix overflow */
+}
+textarea:focus,
+input:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px #ff8c72;
+}
+
+.add-note button {
+  display: block;
+  margin: 0 auto;
+  background: var(--dark-peach);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.add-note button:hover {
+  background: var(--peach);
+  transform: scale(1.05);
+}
+
+/* Notes Card */
+.note-card {
+  background: #ffd1c2;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  word-wrap: break-word; /* Fix overflow */
+  overflow-wrap: break-word; /* Fix overflow */
+}
+
+.note-card h3 {
+  margin: 0 0 5px 0;
+}
+
+.note-card p {
+  margin: 0 0 5px 0;
+  word-wrap: break-word; 
+  white-space: pre-wrap; 
+}
+
+.note-card small {
+  color: #555;
+  word-wrap: break-word;
+}
+
+/* Buttons inside NoteCard */
+.note-card .buttons {
+  margin-top: 5px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; 
+}
+
+.note-card button {
+  flex: 1;
+  background: var(--dark-peach);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  min-width: 80px; 
+}
+
+.note-card button:hover {
+  background: var(--peach);
+  transform: scale(1.05);
+}
+
+/* Full Note Page */
+.full-note {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  padding: 10px;
+}
+.back-btn {
+  background: #ff8c72;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #ff6f4f;
+  transform: scale(1.05);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app {
+    width: 95%; /* almost full width for tablet/mobile */
+    margin: 10px;
+    padding: 15px;
+  }
+
+  header {
+    font-size: 1.5rem;
+  }
+
+  .note-card .buttons {
+    flex-direction: column;
+  }
+
+  .note-card button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    width: 98%; /* Full width on small phones */
+    padding: 10px;
+  }
+
+  header {
+    font-size: 1.3rem;
+  }
+
+  .search-bar-container input,
+  .add-note input,
+  .add-note textarea {
+    padding: 8px;
+    font-size: 1.2rem;
+  }
+  .search-bar-container input {
+    padding-left: 28px; /* mobile left padding */
+    font-size: 1rem;
+  }
+
+  .search-bar-container .search-icon {
+    font-size: 1.2rem; /* fit inside input */
+  }
+
+  .add-note button {
+    padding: 8px 15px;
+  }
 }
