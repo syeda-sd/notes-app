@@ -12,12 +12,6 @@ function FullNote({ notes }) {
       <h2>{note.title}</h2>
       <p>{note.text}</p>
       <small>{note.date}</small>
-      {/* <button
-        onClick={() => navigate(-1)}
-        style={{ marginTop: "10px", display: "block" }}
-      >
-        Back
-      </button> */}
       <button className="back-btn" onClick={() => navigate(-1)}>
   ⬅ Back to Notes
 </button>

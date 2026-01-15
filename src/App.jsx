@@ -14,28 +14,24 @@ function App() {
   const [page, setPage] = useState("save");
   const [loaded, setLoaded] = useState(false);
 
-  // Load from localStorage (safe)
+  // Load from localStorage
   useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
     const savedTrash = JSON.parse(localStorage.getItem("trash")) || [];
-
     setNotes(savedNotes);
     setTrash(savedTrash);
-    setLoaded(true); // important
+    setLoaded(true);
   }, []);
 
-  // Save to localStorage 
+  // Save to localStorage
   useEffect(() => {
     if (!loaded) return;
-
     localStorage.setItem("notes", JSON.stringify(notes));
     localStorage.setItem("trash", JSON.stringify(trash));
   }, [notes, trash, loaded]);
 
-  // Add new note
   const addNote = (note) => setNotes([note, ...notes]);
 
-  // Delete note → move to trash
   const deleteNote = (id) => {
     const deleted = notes.find((n) => n.id === id);
     if (deleted) {
@@ -44,7 +40,6 @@ function App() {
     }
   };
 
-  // Restore note from trash
   const restoreNote = (id) => {
     const restored = trash.find((t) => t.id === id);
     if (restored) {
@@ -53,12 +48,10 @@ function App() {
     }
   };
 
-  // Permanently delete note
   const permanentDelete = (id) => {
     setTrash(trash.filter((t) => t.id !== id));
   };
 
-  // Search filter
   const filteredNotes = notes.filter(
     (note) =>
       note.title.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -66,7 +59,7 @@ function App() {
   );
 
   return (
-    <Router>
+    <Router basename="/notes-app">
       <Routes>
         <Route
           path="/"
@@ -156,7 +149,6 @@ function App() {
             </div>
           }
         />
-
         <Route path="/note/:id" element={<FullNote notes={notes} />} />
       </Routes>
     </Router>

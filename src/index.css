@@ -111,8 +111,8 @@ input:focus {
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
-  word-wrap: break-word; /* Fix overflow */
-  overflow-wrap: break-word; /* Fix overflow */
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
 }
 
 .note-card h3 {
@@ -183,7 +183,7 @@ input:focus {
 /* Responsive */
 @media (max-width: 768px) {
   .app {
-    width: 95%; /* almost full width for tablet/mobile */
+    width: 95%; 
     margin: 10px;
     padding: 15px;
   }
@@ -203,7 +203,7 @@ input:focus {
 
 @media (max-width: 480px) {
   .app {
-    width: 98%; /* Full width on small phones */
+    width: 98%; 
     padding: 10px;
   }
 
@@ -218,12 +218,12 @@ input:focus {
     font-size: 1.2rem;
   }
   .search-bar-container input {
-    padding-left: 28px; /* mobile left padding */
+    padding-left: 28px; 
     font-size: 1rem;
   }
 
   .search-bar-container .search-icon {
-    font-size: 1.2rem; /* fit inside input */
+    font-size: 1.2rem; 
   }
 
   .add-note button {
